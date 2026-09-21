@@ -1,0 +1,23 @@
+# Build outputs and local-only files
+build-manual/
+libs/
+*.apk
+*.aab
+*.keystore
+*.jks
+local.properties
+scripts/.pomcache/
+
+# IDE
+.idea/
+*.iml
+.gradle/
+build/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Python
+__pycache__/
+*.pyc
