@@ -2,13 +2,14 @@
 
 A modern Android music client for **Subsonic**-compatible servers ([Navidrome](https://www.navidrome.org/), Airsonic, Gonic, …).
 
-Dark, jazzy design. Apple Music-style polish. Smooth Jetpack Compose UI.
+Dark or light themes, jazzy design. Apple Music-style polish. Smooth Jetpack Compose UI.
 
 > **Vibe-coded.** It works well on the developer's own device (Oppo A96, Android 13), but **it may not be stable on all devices**. Bug reports, fixes, and improvements from the community are very welcome — that's why it's here.
 
 ## Features
 
 - **Full library browsing** — artists, albums, songs, genres, search
+- **Dark and Light themes** — the classic jazzy dark look or a clean white theme, switchable in Settings
 - **Now Playing** with queue management, shuffle, repeat
 - **Smart Offline Mix** — auto-downloads your starred and most-played songs over Wi-Fi (25/50/100 songs, Wi-Fi-only option)
 - **Party Queue** 🎉 — host a local Wi-Fi session; guests join via QR code, search the library, add songs, and vote. Host keeps playback control.
