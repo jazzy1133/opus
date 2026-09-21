@@ -51,7 +51,7 @@ fun HomeScreen(nav: NavController) {
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Opus", color = Brass, style = MaterialTheme.typography.headlineSmall) },
+                title = { Text("Outro", color = Brass, style = MaterialTheme.typography.headlineSmall) },
                 actions = {
                     IconButton(onClick = { vm.refresh() }) { Icon(Icons.Filled.Refresh, "Refresh") }
                     IconButton(onClick = { nav.navigate(Routes.SETTINGS) }) { Icon(Icons.Filled.Settings, "Settings") }
