@@ -38,7 +38,7 @@ fun SetupScreen(onDone: () -> Unit) {
     ) {
         Icon(Icons.Filled.MusicNote, null, Modifier.size(72.dp), tint = Brass)
         Spacer(Modifier.height(16.dp))
-        Text("Opus", style = MaterialTheme.typography.headlineLarge, color = Brass)
+        Text("Outro", style = MaterialTheme.typography.headlineLarge, color = Brass)
         Spacer(Modifier.height(4.dp))
         Text(
             "Connect to your Navidrome server",
