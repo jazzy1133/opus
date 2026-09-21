@@ -88,7 +88,7 @@ class PartyServer(port: Int, private val session: PartySession) : NanoHTTPD(port
         private const val PAGE = """
 <!DOCTYPE html><html><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Opus Party Queue</title>
+<title>Outro Party Queue</title>
 <style>
 body{background:#0d0d12;color:#f2f2f5;font-family:system-ui,sans-serif;margin:0;padding:16px}
 h1{font-size:20px;margin:4px 0 2px} .sub{color:#9a9aa5;font-size:13px;margin-bottom:14px}
@@ -106,7 +106,7 @@ button.ghost{background:#26262f} button.voted{background:#2f9e6e}
 .votes{color:#c9b8ff;font-weight:700;font-size:13px;min-width:44px;text-align:center}
 .hint{color:#9a9aa5;font-size:12px;text-align:center;margin-top:18px}
 </style></head><body>
-<h1>&#127926; Opus Party Queue</h1>
+<h1>&#127926; Outro Party Queue</h1>
 <div class="sub" id="status">connecting&hellip;</div>
 <div class="now" id="now"><div class="t">Nothing playing</div></div>
 <input id="q" type="search" placeholder="Search songs to add&hellip;" autocomplete="off">
