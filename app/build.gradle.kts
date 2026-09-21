@@ -13,8 +13,8 @@ android {
         applicationId = "com.opus.music"
         minSdk = 26
         targetSdk = 34
-        versionCode = 9
-        versionName = "1.0.8"
+        versionCode = 10
+        versionName = "1.0.9"
         vectorDrawables {
             useSupportLibrary = true
         }
@@ -41,7 +41,7 @@ kotlin {
 }
 
 dependencies {
-    val composeBom = platform("androidx.compose:compose-bom:2024.10.00")
+    val composeBom = platform("androidx.compose:compose-bom:2024.06.00")
     implementation(composeBom)
     androidTestImplementation(composeBom)
 
@@ -68,8 +68,6 @@ dependencies {
     implementation("com.squareup.okhttp3:okhttp:4.12.0")
     implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")
     implementation("io.coil-kt:coil-compose:2.6.0")
-    implementation("com.google.zxing:core:3.5.3")
-    implementation("org.nanohttpd:nanohttpd:2.3.1")
     implementation("androidx.security:security-crypto:1.0.0")
 
     debugImplementation("androidx.compose.ui:ui-tooling")
