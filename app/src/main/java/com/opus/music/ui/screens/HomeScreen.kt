@@ -38,7 +38,6 @@ import com.opus.music.player.PlayerManager
 import com.opus.music.ui.AlbumCard
 import com.opus.music.ui.Routes
 import com.opus.music.ui.SectionHeader
-import com.opus.music.ui.theme.Brass
 import com.opus.music.ui.vm.HomeViewModel
 import com.opus.music.ui.vm.LoadState
 import java.util.Calendar
@@ -51,7 +50,7 @@ fun HomeScreen(nav: NavController) {
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Outro", color = Brass, style = MaterialTheme.typography.headlineSmall) },
+                title = { Text("Outro", color = MaterialTheme.colorScheme.primary, style = MaterialTheme.typography.headlineSmall) },
                 actions = {
                     IconButton(onClick = { vm.refresh() }) { Icon(Icons.Filled.Refresh, "Refresh") }
                     IconButton(onClick = { nav.navigate(Routes.SETTINGS) }) { Icon(Icons.Filled.Settings, "Settings") }
