@@ -41,7 +41,6 @@ import com.opus.music.ui.LoadingBox
 import com.opus.music.ui.PlaylistRow
 import com.opus.music.ui.Routes
 import com.opus.music.ui.SongRow
-import com.opus.music.ui.theme.Brass
 import com.opus.music.ui.vm.LibraryViewModel
 import com.opus.music.ui.vm.LoadState
 
@@ -54,7 +53,7 @@ fun LibraryScreen(nav: NavController) {
 
     Scaffold(
         topBar = {
-            TopAppBar(title = { Text("Your Library", color = Brass, style = MaterialTheme.typography.headlineSmall) })
+            TopAppBar(title = { Text("Your Library", color = MaterialTheme.colorScheme.primary, style = MaterialTheme.typography.headlineSmall) })
         }
     ) { padding ->
         Column(Modifier.fillMaxSize().padding(padding)) {
