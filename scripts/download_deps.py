@@ -18,8 +18,8 @@ import subprocess
 import xml.etree.ElementTree as ET
 from collections import deque
 
-LIBS_DIR = os.environ.get("OPUS_LIBS", os.path.join(os.environ.get("OPUS_PROJECT", os.path.expanduser("~/workspace/opus")), "libs"))
-CACHE_DIR = os.environ.get("OPUS_POMCACHE", os.path.join(os.environ.get("OPUS_PROJECT", os.path.expanduser("~/workspace/opus")), "scripts", ".pomcache"))
+LIBS_DIR = os.environ.get("OUTRO_LIBS", os.path.join(os.environ.get("OUTRO_PROJECT", os.path.expanduser("~/workspace/outro")), "libs"))
+CACHE_DIR = os.environ.get("OUTRO_POMCACHE", os.path.join(os.environ.get("OUTRO_PROJECT", os.path.expanduser("~/workspace/outro")), "scripts", ".pomcache"))
 GOOGLE = "https://dl.google.com/dl/android/maven2"
 CENTRAL = "https://repo1.maven.org/maven2"
 REPOS = [GOOGLE, CENTRAL]
