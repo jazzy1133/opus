@@ -302,8 +302,8 @@ $BUILD_TOOLS/aapt2 link \
   --rename-manifest-package com.opus.music \
   --min-sdk-version 26 \
   --target-sdk-version 34 \
-  --version-code 9 \
-  --version-name "1.0.8" \
+  --version-code 10 \
+  --version-name "1.0.9" \
   $BUILD/res-out/*.flat $UI_RES_FLATS
 
 # Fix: Generate material3 R with REAL IDs from aapt2's output.
