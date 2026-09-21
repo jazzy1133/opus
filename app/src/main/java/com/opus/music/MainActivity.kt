@@ -38,7 +38,7 @@ class MainActivity : ComponentActivity() {
             setContent {
                 OpusTheme {
                     Surface(Modifier.fillMaxSize()) {
-                        Text("Opus failed to start: ${e.message}")
+                        Text("Outro failed to start: ${e.message}")
                     }
                 }
             }
