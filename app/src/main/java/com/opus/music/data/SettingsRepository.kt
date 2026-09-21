@@ -75,6 +75,7 @@ class SettingsRepository(private val context: Context) {
         private const val KEY_MIX_ENABLED = "offline_mix_enabled"
         private const val KEY_MIX_SIZE = "offline_mix_size"
         private const val KEY_MIX_WIFI = "offline_mix_wifi_only"
+        private const val KEY_THEME = "app_theme" // dark | light
     }
 
     // --- App preferences (not credentials) ---
@@ -197,6 +198,20 @@ class SettingsRepository(private val context: Context) {
     fun setOfflineMixWifiOnly(enabled: Boolean) {
         try {
             prefs.edit().putBoolean(KEY_MIX_WIFI, enabled).apply()
+        } catch (_: Exception) {}
+    }
+
+    // --- Appearance / theme ---
+
+    /** "dark" | "light"; defaults to dark (the original jazzy dark theme). */
+    fun getThemeMode(): String = try {
+        val v = prefs.getString(KEY_THEME, "dark") ?: "dark"
+        if (v == "light") "light" else "dark"
+    } catch (_: Exception) { "dark" }
+
+    fun setThemeMode(mode: String) {
+        try {
+            prefs.edit().putString(KEY_THEME, if (mode == "light") "light" else "dark").apply()
         } catch (_: Exception) {}
     }
 }
