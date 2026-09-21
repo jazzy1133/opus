@@ -10,7 +10,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 
-// Opus: deep midnight violet + warm brass accent.
+// Outro: deep midnight violet + warm brass accent.
 val Brass = Color(0xFFE8B04B)
 val BrassDim = Color(0xFFB9832F)
 val Violet = Color(0xFF9D7BFF)
@@ -60,6 +60,6 @@ fun OpusTheme(content: @Composable () -> Unit) {
     )
 }
 
-/** Keep dark always: Opus is a dark-mode-first experience. */
+/** Keep dark always: Outro is a dark-mode-first experience. */
 @Composable
 fun isOpusDark(): Boolean = isSystemInDarkTheme().let { true }
