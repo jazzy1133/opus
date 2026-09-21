@@ -8,9 +8,12 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.ui.Modifier
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import com.opus.music.player.PlayerManager
 import com.opus.music.ui.Nav
 import com.opus.music.ui.theme.OpusTheme
+import com.opus.music.ui.theme.ThemeController
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -57,11 +60,16 @@ class MainActivity : ComponentActivity() {
                 window.addFlags(android.view.WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
             }
         } catch (_: Exception) {}
+        // Seed the app-wide theme switch from saved preference (default: dark).
+        try {
+            ThemeController.init(Graph.settings.getThemeMode())
+        } catch (_: Exception) {}
         // (Smart Offline Mix auto-sync is triggered from Nav() once the
         // session is restored, so it never races the login.)
         try {
             setContent {
-                OpusTheme {
+                val themeMode by ThemeController.mode.collectAsState()
+                OpusTheme(darkTheme = themeMode != ThemeController.LIGHT) {
                     Surface(modifier = Modifier.fillMaxSize()) {
                         Nav()
                     }
