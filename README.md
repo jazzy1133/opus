@@ -1,4 +1,4 @@
-# Opus
+# Outro
 
 A modern Android music client for **Subsonic**-compatible servers ([Navidrome](https://www.navidrome.org/), Airsonic, Gonic, …).
 
@@ -47,14 +47,14 @@ python3 scripts/download_deps.py
 bash scripts/manual_build.sh
 
 # 3. (Optional) run the static check suite against the APK
-python3 scripts/test_107.py build-manual/apk/opus.apk
+python3 scripts/test_108.py build-manual/apk/outro.apk
 ```
 
 The scripts respect these environment variables if your tools live elsewhere:
 
 | Variable | Default | Purpose |
 |---|---|---|
-| `OPUS_PROJECT` | `~/workspace/opus` | Project checkout location |
+| `OUTRO_PROJECT` | `~/workspace/outro` | Project checkout location |
 | `JAVA_HOME` | `~/jdk/jdk-17.0.20.1+1` | JDK 17 |
 | `ANDROID_SDK` | `~/android-sdk` | Android SDK |
 | `KOTLINC_HOME` | `~/kotlinc/kotlin-2.1.0/kotlinc` | Kotlin compiler dist |
