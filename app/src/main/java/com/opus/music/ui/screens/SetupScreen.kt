@@ -24,7 +24,6 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.opus.music.ui.components.OpusTextField
-import com.opus.music.ui.theme.Brass
 import com.opus.music.ui.vm.SetupViewModel
 
 @Composable
@@ -36,9 +35,9 @@ fun SetupScreen(onDone: () -> Unit) {
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Icon(Icons.Filled.MusicNote, null, Modifier.size(72.dp), tint = Brass)
+        Icon(Icons.Filled.MusicNote, null, Modifier.size(72.dp), tint = MaterialTheme.colorScheme.primary)
         Spacer(Modifier.height(16.dp))
-        Text("Outro", style = MaterialTheme.typography.headlineLarge, color = Brass)
+        Text("Outro", style = MaterialTheme.typography.headlineLarge, color = MaterialTheme.colorScheme.primary)
         Spacer(Modifier.height(4.dp))
         Text(
             "Connect to your Navidrome server",
@@ -51,7 +50,7 @@ fun SetupScreen(onDone: () -> Unit) {
             value = vm.url,
             onValueChange = { vm.url = it },
             label = "Server URL",
-            placeholder = "http://your-server:4533",
+            placeholder = "http://192.168.1.10:4533",
             singleLine = true,
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Uri),
             modifier = Modifier.fillMaxWidth()
