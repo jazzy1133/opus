@@ -17,7 +17,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
-import com.opus.music.ui.theme.Brass
 
 /**
  * Outlined text field look-alike built on BasicTextField.
@@ -51,7 +50,7 @@ fun OpusTextField(
             textStyle = MaterialTheme.typography.bodyLarge.copy(
                 color = MaterialTheme.colorScheme.onSurface
             ),
-            cursorBrush = SolidColor(Brass),
+            cursorBrush = SolidColor(MaterialTheme.colorScheme.primary),
             modifier = Modifier.fillMaxWidth(),
             decorationBox = { innerTextField ->
                 Box(
