@@ -51,7 +51,7 @@ import com.opus.music.Graph
 import com.opus.music.Session
 import com.opus.music.player.PlayerManager
 import com.opus.music.ui.Routes
-import com.opus.music.ui.theme.Brass
+import com.opus.music.ui.theme.ThemeController
 import kotlinx.coroutines.launch
 
 private val BITRATE_OPTIONS = listOf(
@@ -117,7 +117,7 @@ fun SettingsScreen(nav: NavController) {
                             "about" -> "About"
                             else -> "Settings"
                         },
-                        color = Brass,
+                        color = MaterialTheme.colorScheme.primary,
                         style = MaterialTheme.typography.headlineSmall
                     )
                 },
@@ -340,12 +340,28 @@ private fun AccountSection(nav: NavController) {
 
 @Composable
 private fun DisplaySection() {
+    var themeMode by remember { mutableStateOf(Graph.settings.getThemeMode()) }
+    var showThemeDialog by remember { mutableStateOf(false) }
     var screenLock by remember { mutableStateOf(Graph.settings.getPreventScreenLock()) }
     SettingsCard {
-        ListItem(
-            headlineContent = { Text("Theme") },
-            supportingContent = { Text("Jazzy Dark — always on, easy on the eyes") }
-        )
+        Row(
+            Modifier.fillMaxWidth().clickable { showThemeDialog = true }
+                .padding(horizontal = 20.dp, vertical = 16.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Column(Modifier.weight(1f)) {
+                Text("Theme", style = MaterialTheme.typography.bodyLarge)
+                Text(
+                    ThemeController.label(themeMode),
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+            }
+            Icon(
+                Icons.AutoMirrored.Filled.KeyboardArrowRight, null,
+                tint = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.6f)
+            )
+        }
         HorizontalDivider(Modifier.padding(horizontal = 20.dp))
         ListItem(
             headlineContent = { Text("Prevent screen lock") },
@@ -358,6 +374,43 @@ private fun DisplaySection() {
         style = MaterialTheme.typography.bodySmall,
         color = MaterialTheme.colorScheme.onSurfaceVariant
     )
+
+    if (showThemeDialog) {
+        AlertDialog(
+            onDismissRequest = { showThemeDialog = false },
+            title = { Text("Theme") },
+            text = {
+                Column {
+                    listOf(
+                        ThemeController.DARK to "Dark",
+                        ThemeController.LIGHT to "Light"
+                    ).forEach { (value, label) ->
+                        Row(
+                            Modifier.fillMaxWidth().clickable {
+                                themeMode = value
+                                Graph.settings.setThemeMode(value)
+                                ThemeController.set(value)
+                                showThemeDialog = false
+                            }.padding(vertical = 8.dp),
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            RadioButton(selected = themeMode == value, onClick = null)
+                            Text(label, Modifier.padding(start = 8.dp))
+                        }
+                    }
+                    Spacer(Modifier.height(8.dp))
+                    Text(
+                        "Dark is the classic jazzy look. Light is a clean white theme.",
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                }
+            },
+            confirmButton = {
+                TextButton(onClick = { showThemeDialog = false }) { Text("Close") }
+            }
+        )
+    }
 }
 
 @Composable
@@ -742,7 +795,7 @@ private fun EqualizerSection() {
     Text(
         "Equalizer",
         style = MaterialTheme.typography.titleMedium,
-        color = Brass
+        color = MaterialTheme.colorScheme.primary
     )
     Spacer(Modifier.height(8.dp))
     Text(
@@ -757,7 +810,7 @@ private fun SwipeSection() {
     Text(
         "Swipe actions",
         style = MaterialTheme.typography.titleMedium,
-        color = Brass
+        color = MaterialTheme.colorScheme.primary
     )
     Spacer(Modifier.height(8.dp))
     Text(
@@ -808,7 +861,7 @@ private fun LicenseSection() {
     Text(
         "License",
         style = MaterialTheme.typography.titleMedium,
-        color = Brass
+        color = MaterialTheme.colorScheme.primary
     )
     Spacer(Modifier.height(8.dp))
     Text(
@@ -823,11 +876,11 @@ private fun AboutSection() {
     Text(
         "About",
         style = MaterialTheme.typography.titleMedium,
-        color = Brass
+        color = MaterialTheme.colorScheme.primary
     )
     Spacer(Modifier.height(8.dp))
     Text(
-        "Outro 1.0.8 — a modern Subsonic client for Navidrome.\nDark, smooth, and yours.",
+        "Outro 1.0.9 — a modern Subsonic client for Navidrome.\nDark or light, smooth, and yours.",
         style = MaterialTheme.typography.bodyMedium,
         color = MaterialTheme.colorScheme.onSurfaceVariant
     )
