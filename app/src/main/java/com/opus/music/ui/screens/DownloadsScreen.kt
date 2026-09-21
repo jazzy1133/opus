@@ -36,7 +36,6 @@ import com.opus.music.ui.CoverArt
 import com.opus.music.ui.DownloadEvents
 import com.opus.music.ui.EmptyBox
 import com.opus.music.Session
-import com.opus.music.ui.theme.Brass
 import com.opus.music.ui.vm.DownloadsViewModel
 
 private fun DownloadInfo.toSong(): Song = Song(
@@ -58,7 +57,7 @@ fun DownloadsScreen(nav: NavController) {
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Offline", color = Brass, style = MaterialTheme.typography.headlineSmall) },
+                title = { Text("Offline", color = MaterialTheme.colorScheme.primary, style = MaterialTheme.typography.headlineSmall) },
                 actions = { Text(vm.totalSize, style = MaterialTheme.typography.bodySmall, modifier = Modifier.padding(end = 16.dp)) }
             )
         }
