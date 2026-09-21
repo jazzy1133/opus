@@ -1,4 +1,4 @@
-# Contributing to Opus
+# Contributing to Outro
 
 Thanks for wanting to help! A few ground rules:
 
@@ -6,7 +6,7 @@ Thanks for wanting to help! A few ground rules:
 
 1. **Fork** the repo and create a branch for your change.
 2. Make your change, keeping the existing code style (official Kotlin style).
-3. Run the check suite: `python3 scripts/test_107.py build-manual/apk/opus.apk` — it should report 54/54.
+3. Run the check suite: `python3 scripts/test_108.py build-manual/apk/outro.apk` — it should report 54/54.
 4. Open a **pull request** describing what you changed and what device(s) you tested on.
 
 ## Reporting bugs
@@ -14,7 +14,7 @@ Thanks for wanting to help! A few ground rules:
 Please include:
 
 - Device model + Android version
-- Opus version (e.g. 1.0.7)
+- Outro version (e.g. 1.0.8)
 - What you were doing when it happened
 - A logcat snippet if you can (`adb logcat | grep opus` — the app tags its logs)
 
