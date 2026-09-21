@@ -76,7 +76,6 @@ import com.opus.music.ui.CoverArt
 import com.opus.music.ui.DownloadEvents
 import com.opus.music.ui.formatDurationMs
 import com.opus.music.ui.rememberIsDownloaded
-import com.opus.music.ui.theme.Brass
 import com.opus.music.ui.vm.PlayerViewModel
 import kotlinx.coroutines.launch
 import androidx.media3.common.Player as M3Player
@@ -226,7 +225,7 @@ fun NowPlayingScreen(nav: NavController) {
                         Icon(
                             if (favorite) Icons.Filled.Favorite else Icons.Filled.FavoriteBorder,
                             "Favorite",
-                            tint = if (favorite) Brass else MaterialTheme.colorScheme.onSurfaceVariant
+                            tint = if (favorite) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurfaceVariant
                         )
                     }
                     IconButton(onClick = {
@@ -241,7 +240,7 @@ fun NowPlayingScreen(nav: NavController) {
                         Icon(
                             if (downloaded) Icons.Filled.Download else Icons.Filled.Download,
                             if (downloaded) "Downloaded" else "Download",
-                            tint = if (downloaded) Brass else MaterialTheme.colorScheme.onSurfaceVariant
+                            tint = if (downloaded) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurfaceVariant
                         )
                     }
                 }
@@ -273,7 +272,7 @@ fun NowPlayingScreen(nav: NavController) {
                     IconButton(onClick = { PlayerManager.toggleShuffle() }) {
                         Icon(
                             Icons.Filled.Shuffle, "Shuffle",
-                            tint = if (ui.shuffle) Brass else MaterialTheme.colorScheme.onSurfaceVariant
+                            tint = if (ui.shuffle) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurfaceVariant
                         )
                     }
                     IconButton(onClick = { PlayerManager.previous() }, modifier = Modifier.size(52.dp)) {
@@ -298,7 +297,7 @@ fun NowPlayingScreen(nav: NavController) {
                             M3Player.REPEAT_MODE_ALL -> Icons.Filled.Repeat to true
                             else -> Icons.Filled.Repeat to false
                         }
-                        Icon(icon, "Repeat", tint = if (active) Brass else MaterialTheme.colorScheme.onSurfaceVariant)
+                        Icon(icon, "Repeat", tint = if (active) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurfaceVariant)
                     }
                 }
                 Spacer(Modifier.height(24.dp))
@@ -334,7 +333,7 @@ fun NowPlayingScreen(nav: NavController) {
                         Column(Modifier.weight(1f)) {
                             Text(
                                 entry.title, maxLines = 1, overflow = TextOverflow.Ellipsis,
-                                color = if (isCurrent) Brass else MaterialTheme.colorScheme.onSurface
+                                color = if (isCurrent) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurface
                             )
                             Text(
                                 entry.artist.orEmpty(), maxLines = 1, overflow = TextOverflow.Ellipsis,
