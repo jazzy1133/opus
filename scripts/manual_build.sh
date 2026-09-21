@@ -1,13 +1,13 @@
 #!/bin/bash
-# Manual APK build for Opus (no Gradle)
+# Manual APK build for Outro (no Gradle)
 # Requires: JDK 17, Android SDK, kotlin-compiler-embeddable 2.1.0, dependencies in libs/
 set -euo pipefail
 
 export JAVA_HOME="${JAVA_HOME:-$HOME/jdk/jdk-17.0.20.1+1}"
 export PATH=$JAVA_HOME/bin:$PATH
 
-# Override with OPUS_PROJECT env var if your checkout lives elsewhere.
-PROJECT="${OPUS_PROJECT:-$HOME/workspace/opus}"
+# Override with OUTRO_PROJECT env var if your checkout lives elsewhere.
+PROJECT="${OUTRO_PROJECT:-$HOME/workspace/outro}"
 LIBS=$PROJECT/libs
 BUILD=$PROJECT/build-manual
 ANDROID_SDK="${ANDROID_SDK:-$HOME/android-sdk}"
@@ -103,9 +103,9 @@ echo "Deduplicating AAR resources..."
 python3 << 'PYEOF'
 import os, re, shutil
 
-build = os.path.join(os.environ.get('OPUS_PROJECT', os.path.expanduser('~/workspace/opus')), 'build-manual')
+build = os.path.join(os.environ.get('OUTRO_PROJECT', os.path.expanduser('~/workspace/outro')), 'build-manual')
 aar_base = os.path.join(build, 'aar-extract')
-app_res = os.path.join(os.environ.get('OPUS_PROJECT', os.path.expanduser('~/workspace/opus')), 'app/src/main/res')
+app_res = os.path.join(os.environ.get('OUTRO_PROJECT', os.path.expanduser('~/workspace/outro')), 'app/src/main/res')
 dedup_base = os.path.join(build, 'aar-res-dedup')
 shutil.rmtree(dedup_base, ignore_errors=True)
 os.makedirs(dedup_base, exist_ok=True)
@@ -228,8 +228,8 @@ mkdir -p $BUILD/r-lib-src
 python3 << 'PYEOF'
 import os, re, glob
 
-aar_extract = os.environ.get('AAR_EXTRACT_DIR', os.path.join(os.environ.get('OPUS_PROJECT', os.path.expanduser('~/workspace/opus')), 'build-manual', 'aar-extract'))
-out_base = os.path.join(os.environ.get('OPUS_PROJECT', os.path.expanduser('~/workspace/opus')), 'build-manual', 'r-lib-src')
+aar_extract = os.environ.get('AAR_EXTRACT_DIR', os.path.join(os.environ.get('OUTRO_PROJECT', os.path.expanduser('~/workspace/outro')), 'build-manual', 'aar-extract'))
+out_base = os.path.join(os.environ.get('OUTRO_PROJECT', os.path.expanduser('~/workspace/outro')), 'build-manual', 'r-lib-src')
 
 # All libraries now get real compiled resources above, so NONE need synthetic R.
 # Their R classes are generated with real IDs from aapt2's link output below.
@@ -302,8 +302,8 @@ $BUILD_TOOLS/aapt2 link \
   --rename-manifest-package com.opus.music \
   --min-sdk-version 26 \
   --target-sdk-version 34 \
-  --version-code 8 \
-  --version-name "1.0.7" \
+  --version-code 9 \
+  --version-name "1.0.8" \
   $BUILD/res-out/*.flat $UI_RES_FLATS
 
 # Fix: Generate material3 R with REAL IDs from aapt2's output.
@@ -313,7 +313,7 @@ python3 << 'PYEOF'
 import os, re
 
 # Parse app's R.java for real IDs
-app_r = os.path.join(os.environ.get('OPUS_PROJECT', os.path.expanduser('~/workspace/opus')), 'build-manual', 'r-src', 'com', 'opus', 'music', 'R.java')
+app_r = os.path.join(os.environ.get('OUTRO_PROJECT', os.path.expanduser('~/workspace/outro')), 'build-manual', 'r-src', 'com', 'opus', 'music', 'R.java')
 id_map = {}
 with open(app_r) as f:
     content = f.read()
@@ -325,7 +325,7 @@ with open(app_r) as f:
 # from the app's R (aapt2 link output). Package name comes from each AAR's manifest.
 import re as _re
 import glob as _glob2
-for _aardir in _glob2.glob(os.path.join(os.environ.get('OPUS_PROJECT', os.path.expanduser('~/workspace/opus')), 'build-manual', 'aar-extract', '*')):
+for _aardir in _glob2.glob(os.path.join(os.environ.get('OUTRO_PROJECT', os.path.expanduser('~/workspace/outro')), 'build-manual', 'aar-extract', '*')):
     _libname = os.path.basename(_aardir.rstrip('/'))
     _manifest = os.path.join(_aardir, 'AndroidManifest.xml')
     _r_txt = os.path.join(_aardir, 'R.txt')
@@ -352,7 +352,7 @@ for _aardir in _glob2.glob(os.path.join(os.environ.get('OPUS_PROJECT', os.path.e
         continue
     if not _resources:
         continue
-    _out_dir = os.path.join(os.environ.get('OPUS_PROJECT', os.path.expanduser('~/workspace/opus')), 'build-manual', 'r-lib-src', _pkg.replace('.', '/')
+    _out_dir = os.path.join(os.environ.get('OUTRO_PROJECT', os.path.expanduser('~/workspace/outro')), 'build-manual', 'r-lib-src', _pkg.replace('.', '/')
     os.makedirs(_out_dir, exist_ok=True)
     with open(os.path.join(_out_dir, 'R.java'), 'w') as f:
         f.write(f'package {_pkg};\n\npublic final class R {{\n')
@@ -369,7 +369,7 @@ for _aardir in _glob2.glob(os.path.join(os.environ.get('OPUS_PROJECT', os.path.e
 print(f"Generated real-ID R classes for all AAR libraries")
 # Legacy single-lib block below kept for reference; replaced by loop above.
 if False:
-    r_txt = os.path.join(os.environ.get('OPUS_PROJECT', os.path.expanduser('~/workspace/opus')), 'build-manual', 'aar-extract', 'material3-android-1.3.0', 'R.txt')
+    r_txt = os.path.join(os.environ.get('OUTRO_PROJECT', os.path.expanduser('~/workspace/outro')), 'build-manual', 'aar-extract', 'material3-android-1.3.0', 'R.txt')
     resources = {}
     with open(r_txt) as f:
         for line in f:
@@ -378,7 +378,7 @@ if False:
                 rtype, name = parts[1], parts[2]
                 real_id = id_map.get(name, '0x0')
                 resources.setdefault(rtype, []).append((name, real_id))
-    out_dir = os.path.join(os.environ.get('OPUS_PROJECT', os.path.expanduser('~/workspace/opus')), 'build-manual', 'r-lib-src', 'androidx', 'compose', 'material3')
+    out_dir = os.path.join(os.environ.get('OUTRO_PROJECT', os.path.expanduser('~/workspace/outro')), 'build-manual', 'r-lib-src', 'androidx', 'compose', 'material3')
     os.makedirs(out_dir, exist_ok=True)
     with open(os.path.join(out_dir, 'R.java'), 'w') as f:
         f.write('package androidx.compose.material3;\n\npublic final class R {\n')
@@ -432,15 +432,15 @@ $BUILD_TOOLS/d8 \
 echo "D8 OK."
 
 echo "=== Step 7: Add dex to APK ==="
-cp $BUILD/apk/base-unaligned.apk $BUILD/apk/opus-unsigned.apk
+cp $BUILD/apk/base-unaligned.apk $BUILD/apk/outro-unsigned.apk
 cd $BUILD/dex
 for dex in *.dex; do
-  $JAVA_HOME/bin/jar uf $BUILD/apk/opus-unsigned.apk $dex
+  $JAVA_HOME/bin/jar uf $BUILD/apk/outro-unsigned.apk $dex
 done
 cd $PROJECT
 
 echo "=== Step 8: Zipalign ==="
-$BUILD_TOOLS/zipalign -f 4 $BUILD/apk/opus-unsigned.apk $BUILD/apk/opus-aligned.apk
+$BUILD_TOOLS/zipalign -f 4 $BUILD/apk/outro-unsigned.apk $BUILD/apk/outro-aligned.apk
 
 echo "=== Step 9: Sign with debug key ==="
 KEYSTORE=$BUILD/debug.keystore
@@ -451,9 +451,9 @@ if [ ! -f "$KEYSTORE" ]; then
 fi
 $BUILD_TOOLS/apksigner sign \
   --ks $KEYSTORE --ks-pass pass:android --key-pass pass:android \
-  --out $BUILD/apk/opus.apk \
-  $BUILD/apk/opus-aligned.apk
+  --out $BUILD/apk/outro.apk \
+  $BUILD/apk/outro-aligned.apk
 
 echo "=== Build complete ==="
-ls -lh $BUILD/apk/opus.apk
-$BUILD_TOOLS/apksigner verify --print-certs $BUILD/apk/opus.apk | head -5
+ls -lh $BUILD/apk/outro.apk
+$BUILD_TOOLS/apksigner verify --print-certs $BUILD/apk/outro.apk | head -5
