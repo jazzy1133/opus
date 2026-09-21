@@ -746,7 +746,7 @@ private fun EqualizerSection() {
     )
     Spacer(Modifier.height(8.dp))
     Text(
-        "Opus plays bit-perfect audio by default. A built-in 5-band equalizer is on the roadmap — for now, use your device's system equalizer for tone tweaks.",
+        "Outro plays bit-perfect audio by default. A built-in 5-band equalizer is on the roadmap — for now, use your device's system equalizer for tone tweaks.",
         style = MaterialTheme.typography.bodyMedium,
         color = MaterialTheme.colorScheme.onSurfaceVariant
     )
@@ -791,7 +791,7 @@ private fun ArtworkSection() {
 private fun SupportSection() {
     SettingsCard {
         ListItem(
-            headlineContent = { Text("Opus Support") },
+            headlineContent = { Text("Outro Support") },
             supportingContent = { Text("Send diagnostics and feedback from the app") }
         )
     }
@@ -812,7 +812,7 @@ private fun LicenseSection() {
     )
     Spacer(Modifier.height(8.dp))
     Text(
-        "Opus is built with open-source libraries: Jetpack Compose, Media3, Coil, OkHttp, and Kotlinx Serialization. Thanks to their authors.",
+        "Outro is built with open-source libraries: Jetpack Compose, Media3, Coil, OkHttp, and Kotlinx Serialization. Thanks to their authors.",
         style = MaterialTheme.typography.bodyMedium,
         color = MaterialTheme.colorScheme.onSurfaceVariant
     )
@@ -827,7 +827,7 @@ private fun AboutSection() {
     )
     Spacer(Modifier.height(8.dp))
     Text(
-        "Opus 1.0.6 — a modern Subsonic client for Navidrome.\nDark, smooth, and yours.",
+        "Outro 1.0.8 — a modern Subsonic client for Navidrome.\nDark, smooth, and yours.",
         style = MaterialTheme.typography.bodyMedium,
         color = MaterialTheme.colorScheme.onSurfaceVariant
     )
