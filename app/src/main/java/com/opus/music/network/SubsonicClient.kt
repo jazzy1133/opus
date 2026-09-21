@@ -14,7 +14,7 @@ import java.security.MessageDigest
 import java.util.UUID
 
 private const val API_VERSION = "1.16.1"
-private const val CLIENT_NAME = "Opus"
+private const val CLIENT_NAME = "Outro"
 
 /** Adds Subsonic token auth (u/t/s/v/c/f) to every request. */
 class AuthInterceptor(private val config: ServerConfig) : Interceptor {
