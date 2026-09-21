@@ -25,7 +25,7 @@ class CrashReportActivity : ComponentActivity() {
             OpusTheme {
                 Surface(Modifier.fillMaxSize()) {
                     Column(Modifier.padding(16.dp).verticalScroll(rememberScrollState())) {
-                        Text("Opus crashed on startup",
+                        Text("Outro crashed on startup",
                             style = MaterialTheme.typography.headlineSmall)
                         Text("Please screenshot this and send it to support.",
                             style = MaterialTheme.typography.bodyMedium,
