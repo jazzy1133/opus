@@ -35,7 +35,6 @@ import com.opus.music.ui.Routes
 import com.opus.music.ui.SectionHeader
 import com.opus.music.ui.SongRow
 import com.opus.music.ui.components.OpusTextField
-import com.opus.music.ui.theme.Brass
 import com.opus.music.ui.vm.LoadState
 import com.opus.music.ui.vm.SearchViewModel
 
@@ -45,7 +44,7 @@ fun SearchScreen(nav: NavController) {
     val vm: SearchViewModel = viewModel()
 
     Scaffold(
-        topBar = { TopAppBar(title = { Text("Search", color = Brass, style = MaterialTheme.typography.headlineSmall) }) }
+        topBar = { TopAppBar(title = { Text("Search", color = MaterialTheme.colorScheme.primary, style = MaterialTheme.typography.headlineSmall) }) }
     ) { padding ->
         Column(Modifier.fillMaxSize().padding(padding)) {
             OpusTextField(
