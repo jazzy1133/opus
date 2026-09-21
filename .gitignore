@@ -2,6 +2,9 @@
 build-manual/
 libs/
 *.apk
+
+# Release APKs are published for download
+!releases/*.apk
 *.aab
 *.keystore
 *.jks
