@@ -6,6 +6,8 @@ Dark or light themes, jazzy design. Apple Music-style polish. Smooth Jetpack Com
 
 > Built and tested on a real device (Android 13), but **it may not be stable on all devices**. Bug reports, fixes, and improvements from the community are very welcome — that's why it's here.
 
+<a href="https://apps.obtainium.imranr.dev/redirect?r=obtainium://app/%7B%22id%22%3A%22com.opus.music%22%2C%22url%22%3A%22https%3A%2F%2Fgithub.com%2Fjazzy1133%2Foutro%22%2C%22author%22%3A%22jazzy1133%22%2C%22name%22%3A%22Outro%22%7D"><img src="assets/badge_obtainium.png" width="161" alt="Get it on Obtainium" /></a>
+
 ## Features
 
 - **Full library browsing** — artists, albums, songs, genres, search
