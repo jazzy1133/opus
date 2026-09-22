@@ -83,7 +83,7 @@ The APK is signed with a **debug key** by default. For release builds, generate 
 
 Contributions are welcome! Please see [CONTRIBUTING.md](CONTRIBUTING.md).
 
-Good first areas: device-compatibility fixes, real-device testing reports, screenshots for this README, equalizer implementation, and Gradle build migration.
+Good first areas: device-compatibility fixes, real-device testing reports, equalizer implementation, and Gradle build migration.
 
 ## License
 
