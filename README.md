@@ -27,7 +27,6 @@ Dark or light themes, jazzy design. Apple Music-style polish. Smooth Jetpack Com
   <img src="screenshots/phone_settings.jpg" width="270" alt="Outro settings screen" />
 </p>
 
-_Sample library content shown is fictional and for illustration only._
 
 ## Requirements
 
