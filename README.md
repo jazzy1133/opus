@@ -4,7 +4,7 @@ A modern Android music client for **Subsonic**-compatible servers ([Navidrome](h
 
 Dark or light themes, jazzy design. Apple Music-style polish. Smooth Jetpack Compose UI.
 
-> **Vibe-coded.** It works well on the developer's own device (Oppo A96, Android 13), but **it may not be stable on all devices**. Bug reports, fixes, and improvements from the community are very welcome — that's why it's here.
+> Built and tested on a real device (Android 13), but **it may not be stable on all devices**. Bug reports, fixes, and improvements from the community are very welcome — that's why it's here.
 
 ## Features
 
